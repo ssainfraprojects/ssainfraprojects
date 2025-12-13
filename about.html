@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | SSA Infra Projects</title>
+    <script defer src="script.js"></script>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        /* Specific Styles for About Page */
+        .page-hero { 
+            background-color: var(--primary-color); 
+            color: var(--text-light); 
+            padding: 80px 20px; 
+            text-align: center;
+        }
+        .page-hero h1 { font-size: 3em; margin-bottom: 10px; }
+        
+        .story-section, .team-section { padding: 60px 20px; text-align: center; }
+        .story-section h2, .team-section h2 { 
+            font-size: 2em; 
+            margin-bottom: 40px; 
+            color: var(--primary-color);
+        }
+        
+        .story-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            text-align: left;
+            margin-bottom: 50px;
+        }
+        .story-content:nth-child(even) { flex-direction: row-reverse; }
+
+        .story-text { flex: 1; }
+        .story-text h3 { color: var(--accent-color); margin-bottom: 15px; }
+
+        .story-image {
+            flex: 1;
+            height: 400px;
+            background-color: #ddd;
+            background-size: cover;
+            background-position: center;
+            border-radius: 8px;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+        .team-member { text-align: center; }
+        .member-photo {
+            width: 150px;
+            height: 150px;
+            background-color: #ccc;
+            border-radius: 50%;
+            margin: 0 auto 15px;
+            background-size: cover;
+            background-position: center;
+        }
+        .member-photo.ceo { background-image: url('team-ceo.jpg'); }
+        .member-photo.manager { background-image: url('team-manager.jpg'); }
+        .member-photo.engineer { background-image: url('team-engineer.jpg'); }
+        .team-member h4 { margin-bottom: 5px; color: var(--primary-color); }
+        .team-member p { font-style: italic; color: #666; }
+
+        @media (max-width: 768px) {
+            .story-content, .story-content:nth-child(even) { flex-direction: column; }
+            .story-image { height: 300px; width: 100%; }
+        }
+    </style>
+</head>
+<body>
+
+    <div id="header-placeholder"></div>
+
+    <section class="page-hero">
+        <div class="container">
+            <h1>Our Story & Our Commitment</h1>
+            <p>Building Trust, Delivering Quality. The people and values behind SSA Infra Projects.</p>
+        </div>
+    </section>
+
+    <section class="story-section container">
+        <h2>The Foundation of SSA Infra Projects</h2>
+        <div class="story-content">
+            <div class="story-text">
+                <h3>Our Mission: Integrity in Every Brick</h3>
+                <p>Founded 15 years ago by [Founder's Name], SSA Infra Projects began with a simple philosophy: to deliver structures that stand the test of time, built on a foundation of honesty and transparency. We believe our clients deserve full visibility into the process, from initial design consultation to final handover.</p>
+                <p>We are dedicated to fostering long-term relationships, prioritizing the safety of our sites, and committing to sustainable building practices that benefit the community and the environment.</p>
+            </div>
+            <div class="story-image" style="background-image: url('company-history.jpg');"></div>
+        </div>
+    </section>
+
+    <section class="team-section container" style="background-color: var(--light-bg); padding: 80px 20px;">
+        <h2>Meet Our Leadership Team</h2>
+        <div class="team-grid">
+            <div class="team-member">
+                <div class="member-photo ceo"></div>
+                <h4>Mr. [Founder's Name]</h4>
+                <p>Founder & CEO</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo manager"></div>
+                <h4>Mrs. [Manager's Name]</h4>
+                <p>Head of Project Management</p>
+            </div>
+            <div class="team-member">
+                <div class="member-photo engineer"></div>
+                <h4>Mr. [Engineer's Name]</h4>
+                <p>Chief Structural Engineer</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact-cta-section" id="contact-cta-section">
+        <h2>Ready to Build with a Partner You Trust?</h2>
+        <p>Your vision is safe in the hands of our experienced team.</p>
+        <a href="mailto:info@ssainfraprojects.com" class="primary-cta-btn">Connect with Our Team</a>
+    </section>
+
+    <div id="footer-placeholder"></div>
+</body>
+</html>

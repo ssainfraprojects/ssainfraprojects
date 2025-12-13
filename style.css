@@ -1,0 +1,525 @@
+:root {
+    --primary-color: #1F3044; 
+    --accent-color: #3a9ae8; 
+    --light-bg: #F9F9F9;
+    --text-dark: #333;
+    --text-light: #fff;
+    --max-width: 1200px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+    font-size: 1.5em; 
+    color: var(--primary-color); 
+}
+.logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    color: var(--text-dark);
+    line-height: 1.6;
+}
+
+.container {
+    max-width: var(--max-width);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+h1, h2, h3 {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
+/* --- Utility & CTA Buttons --- */
+.cta-button, .primary-cta-btn, .secondary-cta-btn {
+    text-decoration: none;
+    font-weight: 600;
+    padding: 12px 25px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+    display: inline-block;
+    text-align: center;
+}
+
+.cta-button {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    border: 2px solid var(--accent-color);
+}
+.cta-button:hover {
+    background-color: #3a9ae8;
+    border-color: #3a9ae8;
+}
+
+.primary-cta-btn {
+    background-color: var(--accent-color);
+    color: var(--text-light);
+    margin-top: 20px;
+    font-size: 1.1em;
+}
+.primary-cta-btn:hover {
+    background-color: var(--primary-color);
+}
+
+.secondary-cta-btn {
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    margin-top: 40px;
+}
+.secondary-cta-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* --- 1. Header & Navigation (Default, Solid Header for non-homepage pages) --- */
+#header-placeholder {
+    position: sticky;
+    top: 0;
+    width: 100%;
+    z-index: 1000; 
+    background-color: var(--text-light);
+}
+
+.main-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    background-color: transparent; 
+    border-bottom: 1px solid #eee; 
+}
+
+.main-nav ul {
+    list-style: none;
+    display: flex;
+}
+
+.main-nav ul li a {
+    text-decoration: none;
+    color: var(--text-dark);
+    padding: 10px 15px;
+    font-weight: 600;
+    font-size: large;
+    transition: color 0.3s ease;
+}
+
+.main-nav ul li a:hover, .main-nav ul li a.active {
+    color: var(--accent-color);
+}
+
+
+#header-placeholder.transparent-header {
+    position: absolute;
+    top: 0;
+    background-color: rgba(31, 48, 68, 0); 
+    z-index: 2000;
+}
+
+#header-placeholder.transparent-header .main-header {
+    border-bottom: none;
+    position: relative; 
+}
+
+#header-placeholder.transparent-header .logo, 
+#header-placeholder.transparent-header .logo span,
+#header-placeholder.transparent-header .main-nav ul li a {
+    color: var(--text-light); 
+}
+
+
+/* --- 2. Hero Section --- */
+.hero-section {
+    position: relative;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-light);
+    overflow: hidden; 
+}
+
+/* Slideshow Container Styling */
+.slideshow-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0; 
+}
+
+.slide-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    opacity: 0; 
+    transition: opacity 1.5s ease-in-out; 
+}
+
+.slide-image.active {
+    opacity: 1; 
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); 
+    z-index: 1;
+}
+
+.hero-content {
+    position: relative;
+    z-index: 2; 
+    padding: 20px;
+    max-width: 800px;
+}
+
+.hero-content h1 {
+    font-size: 3.5em;
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.hero-content p {
+    font-size: 1.3em;
+    font-weight: 300;
+    margin-bottom: 30px;
+}
+
+/* Custom Header for other pages like services.html */
+.page-hero-header {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 80px 20px 60px;
+    text-align: center;
+}
+.page-hero-header h1 {
+    font-size: 3em;
+    margin-bottom: 10px;
+}
+.page-hero-header p {
+    font-size: 1.1em;
+    font-weight: 300;
+}
+
+/* Styling for the new section layout */
+.services-list-section {
+    padding: 60px 20px;
+}
+.services-list-section h2 {
+    font-size: 1.8em;
+    color: var(--accent-color);
+    margin: 40px 0 20px;
+    padding-top: 20px;
+    border-top: 1px solid #ddd;
+}
+.services-list-section h2:first-of-type {
+    margin-top: 0;
+    border-top: none;
+    padding-top: 0;
+}
+
+
+/* --- 3. SSA Difference Section --- */
+.difference-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--light-bg);
+}
+
+.difference-section h2 {
+    font-size: 2em;
+    margin-bottom: 50px;
+    color: var(--primary-color);
+}
+
+.cards-grid {
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+}
+
+.card {
+    flex: 1;
+    max-width: 300px;
+    padding: 30px;
+    background-color: var(--text-light);
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+}
+
+.card i {
+    font-size: 2.5em;
+    color: var(--accent-color);
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    font-size: 1.4em;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+/* --- 4. Featured Projects Section --- */
+.featured-projects {
+    padding: 80px 0;
+    text-align: center;
+}
+
+.featured-projects h2 {
+    font-size: 2em;
+    margin-bottom: 60px;
+    color: var(--primary-color);
+}
+
+.project-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.project-card {
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+.project-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+}
+
+.project-image-placeholder {
+    height: 300px;
+    background-color: #ccc; 
+    background-size: cover;
+    background-position: center;
+    transition: opacity 0.3s ease;
+}
+.project-image-placeholder.residential { background-image: url('placeholder-res.jpg'); }
+.project-image-placeholder.commercial { background-image: url('placeholder-com.jpg'); }
+.project-image-placeholder.renovation { background-image: url('placeholder-ren.jpg'); }
+
+.project-info {
+    padding: 20px;
+}
+
+.project-info h3 {
+    font-size: 1.3em;
+    margin-bottom: 5px;
+    color: var(--primary-color);
+}
+
+.project-info p {
+    color: #666;
+    margin-bottom: 15px;
+}
+
+.project-info a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+.project-info a:hover {
+    text-decoration: underline;
+}
+
+/* --- 5. Testimonial Section --- */
+.testimonial-section {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 80px 20px;
+    text-align: center;
+}
+
+.testimonial-content {
+    max-width: 700px;
+    margin: 0 auto;
+}
+
+.testimonial-content i {
+    font-size: 3em;
+    color: var(--accent-color);
+    margin-bottom: 20px;
+}
+
+.testimonial-content p {
+    font-size: 1.4em;
+    font-style: italic;
+    margin-bottom: 20px;
+}
+
+.client-name {
+    font-weight: 600;
+    font-size: 1.1em;
+}
+
+/* --- 6. Contact CTA Section --- */
+.contact-cta-section {
+    padding: 80px 20px;
+    text-align: center;
+    background-color: var(--light-bg);
+}
+
+.contact-cta-section h2 {
+    font-size: 2.2em;
+    color: var(--primary-color);
+    margin-bottom: 10px;
+}
+
+.contact-cta-section p {
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* --- Footer --- */
+footer {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 40px 0 10px;
+}
+
+.footer-content {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-logo {
+    font-size: 1.5em;
+    font-weight: 700;
+    color: var(--accent-color);
+}
+
+.footer-links, .footer-contact {
+    display: flex;
+    flex-direction: column;
+}
+
+.footer-links h4, .footer-contact h4 {
+    margin-bottom: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+}
+
+.footer-links a, .footer-contact p {
+    color: #ccc;
+    text-decoration: none;
+    margin-bottom: 8px;
+    font-size: 0.95em;
+}
+.footer-links a:hover {
+    color: var(--accent-color);
+}
+
+.footer-contact i {
+    margin-right: 10px;
+    color: var(--accent-color);
+}
+
+.social-icons a {
+    font-size: 1.5em;
+    margin-right: 15px;
+    color: var(--text-light);
+    transition: color 0.3s ease;
+}
+.social-icons a:hover {
+    color: var(--accent-color);
+}
+
+.footer-bottom {
+    text-align: center;
+    font-size: 0.8em;
+    color: #999;
+    padding-top: 15px;
+}
+
+@media (max-width: 900px) {
+    
+    .main-header {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .main-nav ul {
+        flex-wrap: wrap;
+        justify-content: center;
+        margin: 15px 0;
+        list-style: none;
+        padding: 0; 
+        display: flex; 
+    }
+    
+    .main-nav ul li a {
+        padding: 5px 10px;
+    }
+    
+    #header-placeholder {
+        position: relative; 
+        background-color: var(--primary-color);
+        z-index: 1000;
+    }
+    
+    .logo, .logo span, .main-nav ul li a {
+        color: var(--text-light);
+    }
+    
+    #header-placeholder.transparent-header {
+        position: relative !important; 
+        background-color: var(--primary-color) !important; 
+    }
+
+    .cards-grid {
+        flex-direction: column;
+    }
+    .card {
+        max-width: 100%;
+    }
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+    .footer-links, .footer-contact {
+        align-items: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .logo-img { height: 32px; } 
+    .logo { font-size: 1.2em; }
+    .hero-content h1 {
+        font-size: 2.5em;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+    }
+}
