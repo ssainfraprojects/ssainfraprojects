@@ -103,7 +103,7 @@ document.addEventListener('DOMContentLoaded', () => {
     for (let i = 1; i <= maxCheck; i++) {
       let foundThisIndex = false;
       for (const ext of exts) {
-        const url = `/images/slideshow/image${i}.${ext}`;
+        const url = `/images/SlideShow/image${i}.${ext}`;
         // eslint-disable-next-line no-await-in-loop
         const ok = await probeImage(url, 2500);
         if (ok) {
@@ -121,7 +121,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   
     if (images.length === 0) {
-      container.innerHTML = '<p>No slideshow images found in /images/slideshow/</p>';
+      container.innerHTML = '<p>No slideshow images found in /images/SlideShow/</p>';
       return;
     }
   
@@ -159,4 +159,5 @@ document.addEventListener('DOMContentLoaded', () => {
       slides[current].classList.add('active');
       
     }, intervalMs);
+
   })();
