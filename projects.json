@@ -54,7 +54,7 @@
                       {
                           "id":  "p04-house",
                           "title":  "House - Slide Show",
-                          "category":  "exterior",
+                          "category":  "residential",
                           "location":  "Unknown",
                           "description":  "GF: 1200 FF: 1200",
                           "assetFolder":  "",
@@ -73,7 +73,7 @@
                       {
                           "id":  "p05-villa-4bhk",
                           "title":  "4BHK Villa - Velampalayam",
-                          "category":  "villa",
+                          "category":  "residential",
                           "location":  "Velampalayam",
                           "description":  "A spacious 4BHK villa.",
                           "assetFolder":  "p05",
@@ -93,7 +93,7 @@
                       {
                           "id":  "p09-villa",
                           "title":  "Villa - VGV Garden",
-                          "category":  "villa",
+                          "category":  "residential",
                           "location":  "VGV Garden",
                           "description":  "A beautiful villa located in VGV Garden.",
                           "assetFolder":  "p09",
@@ -122,7 +122,7 @@
                       {
                           "id":  "p07-project-07-2",
                           "title":  "Project 07 - Unknown",
-                          "category":  "unknown",
+                          "category":  "commercial",
                           "location":  "Unknown",
                           "description":  "Details of this project are not specified.",
                           "assetFolder":  "p07",
