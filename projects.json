@@ -1,0 +1,176 @@
+﻿{
+    "completed":  [
+                      {
+                          "id":  "p10-gym-interior",
+                          "title":  "Gym interior - Pongalur",
+                          "category":  "interior",
+                          "location":  "Pongalur",
+                          "description":  "GF: 1500 FF: 1500 Court: 1300",
+                          "assetFolder":  "p10",
+                          "heroImage":  "img01.jpg",
+                          "details":  {
+                                          "year":  "",
+                                          "area":  "",
+                                          "duration":  "",
+                                          "fullDescription":  "Project no: 10 Building Type: Gym interior Steel building & pickle ball court Gf = 1500 Ff = 1500 Court = 1300 Location: pongalur",
+                                          "features":  [],
+                                          "gallery":  [
+                                                          "img01.jpg",
+                                                          "img02.jpg",
+                                                          "img03.jpg",
+                                                          "img04.jpg",
+                                                          "img05.jpg",
+                                                          "img06.jpg",
+                                                          "img07.jpg",
+                                                          "img08.jpg"
+                                                      ]
+                                      }
+                      },
+                      {
+                          "id":  "p08-house-renovation",
+                          "title":  "House Renovation - KG Garden",
+                          "category":  "renovation",
+                          "location":  "KG Garden",
+                          "description":  "A beautiful renovation project.",
+                          "assetFolder":  "p08",
+                          "heroImage":  "img01.jpg",
+                          "details":  {
+                                          "year":  "",
+                                          "area":  "",
+                                          "duration":  "",
+                                          "fullDescription":  "Project no: 8 Building Type: House Renovation Location: KG Garden",
+                                          "features":  [],
+                                          "gallery":  [
+                                                          "img01.jpg",
+                                                          "img02.jpg",
+                                                          "img03.jpg",
+                                                          "img04.jpg",
+                                                          "img05.jpg",
+                                                          "img06.jpg",
+                                                          "img07.jpg"
+                                                      ]
+                                      }
+                      },
+                      {
+                          "id":  "p04-house",
+                          "title":  "House - Slide Show",
+                          "category":  "exterior",
+                          "location":  "Unknown",
+                          "description":  "GF: 1200 FF: 1200",
+                          "assetFolder":  "",
+                          "heroImage":  "images/SlideShow/image1.jpg",
+                          "details":  {
+                                          "year":  "",
+                                          "area":  "",
+                                          "duration":  "",
+                                          "fullDescription":  "Project no: 4 Building Type: House Gf = 1200 Ff = 1200 Location: Not specified",
+                                          "features":  [],
+                                          "gallery":  [
+
+                                                      ]
+                                      }
+                      },
+                      {
+                          "id":  "p05-villa-4bhk",
+                          "title":  "4BHK Villa - Velampalayam",
+                          "category":  "villa",
+                          "location":  "Velampalayam",
+                          "description":  "A spacious 4BHK villa.",
+                          "assetFolder":  "p05",
+                          "heroImage":  "img01.jpg",
+                          "details":  {
+                                          "year":  "",
+                                          "area":  "",
+                                          "duration":  "",
+                                          "fullDescription":  "Project no: 5 Building Type: 4BHK Villa Location: Velampalayam",
+                                          "features":  [],
+                                          "gallery":  [
+                                                          "img01.jpg",
+                                                          "img02.jpg"
+                                                      ]
+                                      }
+                      },
+                      {
+                          "id":  "p09-villa",
+                          "title":  "Villa - VGV Garden",
+                          "category":  "villa",
+                          "location":  "VGV Garden",
+                          "description":  "A beautiful villa located in VGV Garden.",
+                          "assetFolder":  "p09",
+                          "heroImage":  "img01.jpg",
+                          "details":  {
+                                          "year":  "",
+                                          "area":  "",
+                                          "duration":  "",
+                                          "fullDescription":  "Project no: 9 Building Type: Villa Location: VGV Garden",
+                                          "features":  [],
+                                          "gallery":  [
+                                                          "img01.jpg",
+                                                          "img02.jpg",
+                                                          "img03.jpg",
+                                                          "img04.jpg",
+                                                          "img05.jpg",
+                                                          "img06.jpg",
+                                                          "img07.jpg",
+                                                          "img08.jpg",
+                                                          "img09.jpg",
+                                                          "img10.jpg",
+                                                          "img11.jpg"
+                                                      ]
+                                      }
+                      },
+                      {
+                          "id":  "p07-project-07-2",
+                          "title":  "Project 07 - Unknown",
+                          "category":  "unknown",
+                          "location":  "Unknown",
+                          "description":  "Details of this project are not specified.",
+                          "assetFolder":  "p07",
+                          "heroImage":  "img01.jpg",
+                          "details":  {
+                                          "year":  "",
+                                          "area":  "",
+                                          "duration":  "",
+                                          "fullDescription":  "Project no: 7 Building Type: Unknown Location: Not specified",
+                                          "features":  [],
+                                          "gallery":  [
+                                                          "img01.jpg",
+                                                          "img02.jpg",
+                                                          "img03.jpg",
+                                                          "img04.jpg"
+                                                      ]
+                                      }
+                      },
+                      {
+                          "id":  "p06-house-interior",
+                          "title":  "House Interior - Pongalur",
+                          "category":  "interior",
+                          "location":  "Pongalur",
+                          "description":  "Interior design for a house in Pongalur.",
+                          "assetFolder":  "p06",
+                          "heroImage":  "img01.jpg",
+                          "details":  {
+                                          "year":  "",
+                                          "area":  "",
+                                          "duration":  "",
+                                          "fullDescription":  "Project no: 6 Building Type: House Interior Location: Pongalur",
+                                          "features":  [],
+                                          "gallery":  [
+                                                          "img01.jpg",
+                                                          "img02.jpg",
+                                                          "img03.jpg",
+                                                          "img04.jpg",
+                                                          "img05.jpg",
+                                                          "img06.jpg"
+                                                      ]
+                                      }
+                      }
+                  ],
+    "ongoing":  [
+                    {
+                        "id":  "p07-project-07",
+                        "assetFolder":  "p07",
+                        "heroImage":  "img01.jpg"
+                    }
+                ]
+}

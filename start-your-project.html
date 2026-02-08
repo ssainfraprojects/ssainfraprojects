@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Start Your Project | SSA Infra Projects</title>
+  <script defer src="script.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
+</head>
+<body>
+  <div id="header-placeholder"></div>
+
+  <section class="page-hero-header">
+    <div class="container">
+      <h1>Start Your Project</h1>
+      <p>Share a few details and we’ll get back to you with the next steps.</p>
+    </div>
+  </section>
+
+  <section class="container" style="padding: 60px 20px;">
+    <div class="inquiry-card">
+      <h2 style="color: var(--primary-color); margin-bottom: 10px;">Project Inquiry Form</h2>
+      <p style="color: #666; margin-bottom: 25px;">
+        Fill in the details and submit. We’ll save your request on this device for now.
+      </p>
+
+      <form id="project-inquiry-form" class="inquiry-form" novalidate>
+        <div class="form-grid">
+          <div class="form-field">
+            <label for="name">Contact Name</label>
+            <input id="name" name="name" type="text" autocomplete="name" required />
+          </div>
+
+          <div class="form-field">
+            <label for="email">Email</label>
+            <input id="email" name="email" type="email" autocomplete="email" required />
+          </div>
+
+          <div class="form-field">
+            <label for="phone">Phone Number</label>
+            <input id="phone" name="phone" type="tel" autocomplete="tel" required />
+          </div>
+
+          <div class="form-field">
+            <label for="area">Construction Area (sq ft)</label>
+            <input id="area" name="area" type="number" min="0" step="1" inputmode="numeric" required />
+          </div>
+
+          <div class="form-field">
+            <label for="type">Construction Type</label>
+            <select id="type" name="type" required>
+              <option value="" selected disabled>Select type</option>
+              <option value="House">House</option>
+              <option value="Villa">Villa</option>
+              <option value="Commercial">Commercial</option>
+              <option value="Interior">Interior</option>
+              <option value="Renovation">Renovation</option>
+              <option value="Other">Other</option>
+            </select>
+          </div>
+
+          <div class="form-field">
+            <label for="location">Location</label>
+            <input id="location" name="location" type="text" autocomplete="address-level2" placeholder="City / Area" />
+          </div>
+        </div>
+
+        <div class="form-field" style="margin-top: 15px;">
+          <label for="message">Additional Details (Optional)</label>
+          <textarea id="message" name="message" rows="5" placeholder="Tell us about timelines, number of floors, budget range, etc."></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="primary-cta-btn" style="border: none; cursor: pointer;">Submit Inquiry</button>
+          <a href="index.html" class="secondary-cta-btn" style="margin-top: 0;">Back to Home</a>
+        </div>
+
+        <p id="form-error" class="form-error" style="display:none;"></p>
+        <p id="form-success" style="display:none; margin-top: 12px; padding: 12px 14px; border-radius: 8px; background: #f1fff4; color: #0a6b2b; border: 1px solid rgba(10, 107, 43, 0.2);"></p>
+      </form>
+    </div>
+  </section>
+
+  <div id="footer-placeholder"></div>
+</body>
+</html>

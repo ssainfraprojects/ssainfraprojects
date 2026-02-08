@@ -54,6 +54,7 @@ function setActiveNavLink() {
         'completed.html': 'nav-completed',
         'ongoing.html': 'nav-ongoing',
         'about.html': 'nav-about',
+        'start-your-project.html': 'nav-home',
         '': 'nav-home' // Handles the root URL
     };
 
@@ -70,94 +71,293 @@ function setActiveNavLink() {
     }
 }
 
-// Run the loader when the page finishes loading
+// NEW: Load and display featured projects on the homepage
+async function loadHomepageProjects() {
+  const grid = document.getElementById('homepage-projects-grid');
+  if (!grid) return;
+
+  try {
+    const response = await fetch('projects.json');
+    if (!response.ok) throw new Error('Failed to load projects');
+
+    const data = await response.json();
+    const projects = (data.completed || []).slice(0, 3);
+
+    if (projects.length === 0) {
+      grid.innerHTML = '<div class="no-projects">No projects available.</div>';
+      return;
+    }
+
+    grid.innerHTML = '';
+
+    projects.forEach(project => {
+      const card = document.createElement('div');
+      card.className = 'project-card';
+
+      card.innerHTML = `
+        <div class="project-image-placeholder" style="background-image: url('${getProjectHeroImageUrl(project)}');"></div>
+        <div class="project-info">
+          <h3>${project.title}</h3>
+          <p>${project.location ? project.location : ''}</p>
+          <a href="${getProjectDetailsLink(project)}">View Details <i class="fas fa-arrow-right"></i></a>
+        </div>
+      `;
+
+      grid.appendChild(card);
+    });
+  } catch (error) {
+    console.error('Error loading homepage projects:', error);
+    grid.innerHTML = '<div class="no-projects">Error loading projects.</div>';
+  }
+}
+
+// Load and display completed projects
+async function loadCompletedProjects() {
+  const grid = document.getElementById('completed-projects-grid');
+  if (!grid) return;
+
+  try {
+      const response = await fetch('projects.json');
+      if (!response.ok) throw new Error('Failed to load projects');
+      
+      const data = await response.json();
+      const projects = data.completed || [];
+
+      if (projects.length === 0) {
+          grid.innerHTML = '<div class="no-projects">No completed projects available.</div>';
+          return;
+      }
+
+      // Clear loading message
+      grid.innerHTML = '';
+
+      // Create project cards
+      projects.forEach(project => {
+          const card = document.createElement('div');
+          card.className = 'project-card';
+          card.dataset.category = project.category;
+
+          card.innerHTML = `
+              <div class="project-image-placeholder ${project.category}" 
+                   style="background-image: url('${getProjectHeroImageUrl(project)}');"></div>
+              <div class="project-info">
+                  <h3>${project.title}</h3>
+                  <p>${project.description}, ${project.location}</p>
+                  <a href="${getProjectDetailsLink(project)}">View Case Study <i class="fas fa-arrow-right"></i></a>
+              </div>
+          `;
+          grid.appendChild(card);
+      });
+
+      // Setup filter functionality
+      setupProjectFilter();
+
+  } catch (error) {
+      console.error('Error loading completed projects:', error);
+      grid.innerHTML = '<div class="no-projects">Error loading projects. Please try again later.</div>';
+  }
+}
+
+// Setup filter buttons for completed projects
+function setupProjectFilter() {
+  const filterButtons = document.querySelectorAll('.filter-btn');
+  const projectCards = document.querySelectorAll('.project-card');
+
+  filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+          // Update active button
+          filterButtons.forEach(btn => btn.classList.remove('active'));
+          button.classList.add('active');
+
+          const filter = button.dataset.filter;
+
+          // Filter projects
+          projectCards.forEach(card => {
+              if (filter === 'all' || card.dataset.category === filter) {
+                  card.style.display = 'block';
+              } else {
+                  card.style.display = 'none';
+              }
+          });
+      });
+  });
+}
+
+// Load and display ongoing projects
+async function loadOngoingProjects() {
+  const list = document.getElementById('ongoing-projects-list');
+  if (!list) return;
+
+  try {
+      const response = await fetch('projects.json');
+      if (!response.ok) throw new Error('Failed to load projects');
+      
+      const data = await response.json();
+      const projects = data.ongoing || [];
+
+      if (projects.length === 0) {
+          list.innerHTML = '<div class="no-projects">No ongoing projects at the moment.</div>';
+          return;
+      }
+
+      // Clear loading message
+      list.innerHTML = '';
+
+      // Create project cards
+      projects.forEach(project => {
+          const card = document.createElement('div');
+          card.className = 'ongoing-card';
+
+          card.innerHTML = `
+              <div class="ongoing-image" style="background-image: url('${getProjectHeroImageUrl(project)}');"></div>
+              <div class="ongoing-details">
+                  <h3>${project.title}</h3>
+                  <p><strong>Location:</strong> ${project.location}</p>
+                  <p><strong>Type:</strong> ${project.type}</p>
+                  <p><strong>Status:</strong> ${project.status}</p>
+                  <p><strong>Estimated Completion:</strong> ${project.completion}</p>
+                  <p><strong>Progress (${project.progress}%):</strong></p>
+                  <div class="progress-bar">
+                      <div class="progress-bar-fill" style="width: ${project.progress}%;"></div>
+                  </div>
+              </div>
+          `;
+          list.appendChild(card);
+      });
+
+  } catch (error) {
+      console.error('Error loading ongoing projects:', error);
+      list.innerHTML = '<div class="no-projects">Error loading projects. Please try again later.</div>';
+  }
+}
+
+function validateInquiryForm(form) {
+  const name = form.querySelector('#name');
+  const email = form.querySelector('#email');
+  const phone = form.querySelector('#phone');
+  const area = form.querySelector('#area');
+  const type = form.querySelector('#type');
+
+  const required = [name, email, phone, area, type];
+  const missing = required.filter(el => !el || !String(el.value || '').trim());
+
+  if (missing.length > 0) {
+    return 'Please fill in all required fields.';
+  }
+
+  // Basic email check
+  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.value.trim())) {
+    return 'Please enter a valid email address.';
+  }
+
+  // Basic phone check (keeps it flexible for India/international)
+  if (!/^[0-9+()\-\s]{7,}$/.test(phone.value.trim())) {
+    return 'Please enter a valid phone number.';
+  }
+
+  return null;
+}
+
+function setupProjectInquiryForm() {
+  const form = document.getElementById('project-inquiry-form');
+  if (!form) return;
+
+  const errorEl = document.getElementById('form-error');
+  const successEl = document.getElementById('form-success');
+
+  const setError = (msg) => {
+    if (!errorEl) return;
+    errorEl.textContent = msg || '';
+    errorEl.style.display = msg ? 'block' : 'none';
+  };
+
+  const setSuccess = (msg) => {
+    if (!successEl) return;
+    successEl.textContent = msg || '';
+    successEl.style.display = msg ? 'block' : 'none';
+  };
+
+  const value = (id) => {
+    const el = form.querySelector('#' + id);
+    return el ? String(el.value || '').trim() : '';
+  };
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    setSuccess('');
+
+    const err = validateInquiryForm(form);
+    if (err) {
+      setError(err);
+      return;
+    }
+
+    setError('');
+
+    const inquiry = {
+      name: value('name'),
+      email: value('email'),
+      phone: value('phone'),
+      areaSqFt: value('area'),
+      type: value('type'),
+      location: value('location'),
+      message: value('message'),
+      createdAt: new Date().toISOString()
+    };
+
+    try {
+      const key = 'ssa_inquiries';
+      const existing = JSON.parse(localStorage.getItem(key) || '[]');
+      existing.unshift(inquiry);
+      localStorage.setItem(key, JSON.stringify(existing));
+
+      form.reset();
+      setSuccess('Thanks! Your inquiry has been saved. We’ll enable sending once the email setup is ready.');
+    } catch (ex) {
+      console.error('Failed to save inquiry:', ex);
+      setError('Could not save your inquiry in this browser. Please try again.');
+    }
+  });
+}
+
+function getProjectDetailsLink(project) {
+  const id = project && project.id ? encodeURIComponent(project.id) : '';
+  return `projects-details.html?id=${id}`;
+}
+
+function getProjectHeroImageUrl(project) {
+  if (!project) return '';
+
+  // Allow absolute/legacy paths (e.g., slideshow) when heroImage already looks like a path
+  const hero = project.heroImage || '';
+  if (hero.includes('/') || hero.includes('\\')) {
+    return hero;
+  }
+
+  if (project.assetFolder && hero) {
+    return `images/projects/${project.assetFolder}/${hero}`;
+  }
+
+  return '';
+}
+
+// Initialize common layout + page-specific loaders
 document.addEventListener('DOMContentLoaded', () => {
   loadHeader();
   loadFooter();
+
+  // Start Your Project form
+  setupProjectInquiryForm();
+
+  // Home page featured projects
+  if (document.getElementById('homepage-projects-grid')) {
+    loadHomepageProjects();
+  }
+
+  if (window.location.pathname.includes('completed.html')) {
+      loadCompletedProjects();
+  } else if (window.location.pathname.includes('ongoing.html')) {
+      loadOngoingProjects();
+  }
 });
-
-// ...existing code for initSlideshow...
-(async function initSlideshow() {
-    const container = document.getElementById('slideshow-container');
-    if (!container) return;
-  
-    const exts = ['jpg', 'png', 'webp'];
-    const maxCheck = 100;
-    const stopAfterMisses = 6;
-    const images = [];
-  
-    function probeImage(url, timeout = 3000) {
-      return new Promise(resolve => {
-        const img = new Image();
-        let settled = false;
-        const timer = setTimeout(() => {
-          if (!settled) { settled = true; resolve(false); }
-        }, timeout);
-        img.onload = () => { if (!settled) { settled = true; clearTimeout(timer); resolve(true); } };
-        img.onerror = () => { if (!settled) { settled = true; clearTimeout(timer); resolve(false); } };
-        img.src = url;
-      });
-    }
-  
-    let missCount = 0;
-    for (let i = 1; i <= maxCheck; i++) {
-      let foundThisIndex = false;
-      for (const ext of exts) {
-        const url = `/images/SlideShow/image${i}.${ext}`;
-        // eslint-disable-next-line no-await-in-loop
-        const ok = await probeImage(url, 2500);
-        if (ok) {
-          images.push(url);
-          foundThisIndex = true;
-          break;
-        }
-      }
-      if (!foundThisIndex) {
-        missCount++;
-        if (missCount >= stopAfterMisses && i > 5) break;
-      } else {
-        missCount = 0;
-      }
-    }
-  
-    if (images.length === 0) {
-      container.innerHTML = '<p>No slideshow images found in /images/SlideShow/</p>';
-      return;
-    }
-  
-    images.forEach((src, idx) => {
-      const img = document.createElement('img');
-      img.className = 'slide-image' + (idx === 0 ? ' active' : '');
-      img.src = src;
-      img.alt = `Slideshow image ${idx + 1}`;
-      container.appendChild(img);
-    });
-  
-    // basic slideshow cycle
-    let current = 0;
-    const slides = container.querySelectorAll('.slide-image');
-    const intervalMs = 5000;
-    
-    // Ensure the first slide is visible when JS starts (though HTML/CSS should handle it)
-    if (slides.length > 0) {
-        slides[0].classList.add('active');
-    }
-
-    setInterval(() => {
-      // 1. Remove 'active' from the current slide (fades out)
-      slides[current].classList.remove('active');
-      
-      // 2. Clear any lingering 'previous' or 'style' attributes from the failed sliding attempts
-      slides[current].classList.remove('previous');
-      slides[current].style.transition = '';
-      slides[current].style.transform = '';
-
-      // 3. Calculate the next slide index
-      current = (current + 1) % slides.length;
-      
-      // 4. Add 'active' to the next slide (fades in)
-      slides[current].classList.add('active');
-      
-    }, intervalMs);
-
-  })();

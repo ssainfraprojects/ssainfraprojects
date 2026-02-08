@@ -9,7 +9,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        /* Specific Styles for Ongoing Projects */
         .page-hero { 
             background-color: var(--primary-color); 
             color: var(--text-light); 
@@ -27,7 +26,7 @@
             border-radius: 8px;
             box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
         }
-        .ongoing-card:nth-child(even) { /* Alternate image/text position for visual interest */
+        .ongoing-card:nth-child(even) {
             flex-direction: row-reverse;
         }
         .ongoing-image {
@@ -58,6 +57,13 @@
         .progress-bar-fill {
             height: 100%;
             background-color: var(--accent-color);
+            transition: width 0.3s ease;
+        }
+        .no-projects {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+            font-size: 1.2em;
         }
 
         @media (max-width: 900px) {
@@ -86,34 +92,8 @@
         </div>
     </section>
 
-    <section class="ongoing-list container">
-        
-        <div class="ongoing-card">
-            <div class="ongoing-image" style="background-image: url('ongoing-img-1.jpg');"></div>
-            <div class="ongoing-details">
-                <h3>The Phoenix Office Towers</h3>
-                <p><strong>Location:</strong> Financial District, Hyderabad</p>
-                <p><strong>Type:</strong> Commercial Core & Shell</p>
-                <p><strong>Status:</strong> Structure Completion & Façade Installation</p>
-                <p><strong>Estimated Completion:</strong> Q4 2025</p>
-                <p><strong>Progress (75%):</strong></p>
-                <div class="progress-bar"><div class="progress-bar-fill" style="width: 75%;"></div></div>
-            </div>
-        </div>
-
-        <div class="ongoing-card">
-            <div class="ongoing-image" style="background-image: url('ongoing-img-2.jpg');"></div>
-            <div class="ongoing-details">
-                <h3>The Emerald Residence</h3>
-                <p><strong>Location:</strong> Vasant Vihar, New Delhi</p>
-                <p><strong>Type:</strong> Custom Luxury Home Build</p>
-                <p><strong>Status:</strong> Interior Finishing & Landscaping</p>
-                <p><strong>Estimated Completion:</strong> Q2 2025</p>
-                <p><strong>Progress (90%):</strong></p>
-                <div class="progress-bar"><div class="progress-bar-fill" style="width: 90%;"></div></div>
-            </div>
-        </div>
-
+    <section class="ongoing-list container" id="ongoing-projects-list">
+        <div class="no-projects">Loading projects...</div>
     </section>
 
     <section class="contact-cta-section" id="contact-cta-section">

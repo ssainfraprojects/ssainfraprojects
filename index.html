@@ -4,6 +4,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SSA Infra Projects - Building Foundations for Tomorrow's Dreams</title>
+
+    <!-- Preload the homepage hero image to speed up first paint -->
+    <link rel="preload" as="image" href="images/SlideShow/image1.jpg">
+
     <script defer src="script.js"></script>
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
@@ -14,7 +18,9 @@
     <div id="header-placeholder"></div>
 
     <section class="hero-section">
-        <div class="slideshow-container"  id="slideshow-container"></div>        
+        <!-- Fixed hero image (no slideshow) -->
+        <div class="hero-image" aria-hidden="true"></div>
+
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <h1>Building Excellence. Delivering Trust.</h1>
@@ -46,32 +52,9 @@
 
     <section class="featured-projects">
         <div class="container">
-            <h2>Our Handiwork: Signature Projects</h2>
-            <div class="project-grid">
-                <div class="project-card">
-                    <div class="project-image-placeholder residential"></div>
-                    <div class="project-info">
-                        <h3>The Skyview Towers</h3>
-                        <p>Residential Complex, New Delhi</p>
-                        <a href="#">View Case Study <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image-placeholder commercial"></div>
-                    <div class="project-info">
-                        <h3>Global Tech Hub</h3>
-                        <p>Commercial Office, Bengaluru</p>
-                        <a href="#">View Case Study <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
-                <div class="project-card">
-                    <div class="project-image-placeholder renovation"></div>
-                    <div class="project-info">
-                        <h3>Heritage Home Renovation</h3>
-                        <p>Luxury Residential, Mumbai</p>
-                        <a href="#">View Case Study <i class="fas fa-arrow-right"></i></a>
-                    </div>
-                </div>
+            <h2>Our Handwork: Signature Projects</h2>
+            <div class="project-grid" id="homepage-projects-grid">
+                <div class="no-projects">Loading projects...</div>
             </div>
             <a href="completed.html" class="secondary-cta-btn">Explore Full Portfolio</a>
         </div>

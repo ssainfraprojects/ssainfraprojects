@@ -61,9 +61,9 @@
             background-size: cover;
             background-position: center;
         }
-        .member-photo.ceo { background-image: url('team-ceo.jpg'); }
-        .member-photo.manager { background-image: url('team-manager.jpg'); }
-        .member-photo.engineer { background-image: url('team-engineer.jpg'); }
+        .member-photo.ceo { }
+        .member-photo.manager { }
+        .member-photo.engineer { }
         .team-member h4 { margin-bottom: 5px; color: var(--primary-color); }
         .team-member p { font-style: italic; color: #666; }
 
@@ -71,6 +71,10 @@
             .story-content, .story-content:nth-child(even) { flex-direction: column; }
             .story-image { height: 300px; width: 100%; }
         }
+
+        /* Remove references to missing local images (keep a neutral placeholder block) */
+        .story-image { background-image: none !important; }
+        .member-photo.ceo, .member-photo.manager, .member-photo.engineer { background-image: none !important; }
     </style>
 </head>
 <body>
@@ -80,7 +84,7 @@
     <section class="page-hero">
         <div class="container">
             <h1>Our Story & Our Commitment</h1>
-            <p>Building Trust, Delivering Quality. The people and values behind SSA Infra Projects.</p>
+            <p>Building trust, delivering quality. The people and values behind SSA Infra Projects.</p>
         </div>
     </section>
 
@@ -89,30 +93,20 @@
         <div class="story-content">
             <div class="story-text">
                 <h3>Our Mission: Integrity in Every Brick</h3>
-                <p>Founded 15 years ago by [Founder's Name], SSA Infra Projects began with a simple philosophy: to deliver structures that stand the test of time, built on a foundation of honesty and transparency. We believe our clients deserve full visibility into the process, from initial design consultation to final handover.</p>
-                <p>We are dedicated to fostering long-term relationships, prioritizing the safety of our sites, and committing to sustainable building practices that benefit the community and the environment.</p>
+                <p>SSA Infra Projects began with a simple philosophy: to deliver structures that stand the test of time, built on a foundation of honesty and transparency. We believe our clients deserve full visibility into the process, from initial design consultation to final handover.</p>
+                <p>We are dedicated to fostering long-term relationships, prioritizing site safety, and committing to sustainable building practices that benefit the community and the environment.</p>
             </div>
-            <div class="story-image" style="background-image: url('company-history.jpg');"></div>
+            <div class="story-image"></div>
         </div>
     </section>
 
     <section class="team-section container" style="background-color: var(--light-bg); padding: 80px 20px;">
-        <h2>Meet Our Leadership Team</h2>
-        <div class="team-grid">
+        <h2>Meet Our Leadership</h2>
+        <div class="team-grid" style="grid-template-columns: 1fr; max-width: 420px; margin: 0 auto;">
             <div class="team-member">
                 <div class="member-photo ceo"></div>
-                <h4>Mr. [Founder's Name]</h4>
-                <p>Founder & CEO</p>
-            </div>
-            <div class="team-member">
-                <div class="member-photo manager"></div>
-                <h4>Mrs. [Manager's Name]</h4>
-                <p>Head of Project Management</p>
-            </div>
-            <div class="team-member">
-                <div class="member-photo engineer"></div>
-                <h4>Mr. [Engineer's Name]</h4>
-                <p>Chief Structural Engineer</p>
+                <h4>Mr. Sanjay G</h4>
+                <p>Founder</p>
             </div>
         </div>
     </section>
