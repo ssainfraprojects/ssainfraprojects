@@ -72,9 +72,13 @@
             .story-image { height: 300px; width: 100%; }
         }
 
-        /* Remove references to missing local images (keep a neutral placeholder block) */
-        .story-image { background-image: none !important; }
-        .member-photo.ceo, .member-photo.manager, .member-photo.engineer { background-image: none !important; }
+        /* About page images */
+        .story-image.mission-img {
+            background-image: url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&q=80');
+        }
+        .member-photo.ceo {
+            background-image: url('images/CEO.jpeg');
+        }
     </style>
 </head>
 <body>
@@ -96,7 +100,7 @@
                 <p>SSA Infra Projects began with a simple philosophy: to deliver structures that stand the test of time, built on a foundation of honesty and transparency. We believe our clients deserve full visibility into the process, from initial design consultation to final handover.</p>
                 <p>We are dedicated to fostering long-term relationships, prioritizing site safety, and committing to sustainable building practices that benefit the community and the environment.</p>
             </div>
-            <div class="story-image"></div>
+            <div class="story-image mission-img" role="img" aria-label="Construction site with workers and building framework"></div>
         </div>
     </section>
 

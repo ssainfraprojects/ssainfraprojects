@@ -2,8 +2,9 @@ function loadHeader() {
     const headerPlaceholder = document.getElementById('header-placeholder');
     if (!headerPlaceholder) return;
 
-    // ⭐ NEW: Check if this is the homepage (index.html or root URL) ⭐
-    const isHomepage = (window.location.pathname.split('/').pop() === 'index.html' || window.location.pathname.split('/').pop() === '');
+    // Check if this is the homepage (index.html or root URL)
+    const rawPath = window.location.pathname.split('/').pop();
+    const isHomepage = (rawPath === 'index.html' || rawPath === '');
 
     fetch('header.html') // Fetch the content of the header.html file
         .then(response => {
@@ -15,7 +16,7 @@ function loadHeader() {
         .then(html => {
             headerPlaceholder.innerHTML = html;
             
-            // ⭐ NEW: Apply transparent-header class ONLY on the homepage ⭐
+            // Apply transparent-header class only on the homepage
             if (isHomepage) {
                 headerPlaceholder.classList.add('transparent-header');
             }
@@ -25,7 +26,7 @@ function loadHeader() {
         .catch(error => console.error("Error loading header:", error));
 }
 
-// NEW: Load footer
+// Load footer
 function loadFooter() {
   const footerPlaceholder = document.getElementById('footer-placeholder');
   if (!footerPlaceholder) return;
@@ -45,16 +46,19 @@ function loadFooter() {
 
 // Function to dynamically set the 'active' class based on the current page
 function setActiveNavLink() {
-    const currentPath = window.location.pathname.split('/').pop(); // e.g., 'services.html'
+    const rawPath = window.location.pathname.split('/').pop();
+    // Strip .html extension for robust matching (works with or without extension)
+    const currentPath = rawPath.replace('.html', '');
 
-    // Map file names to the IDs we gave the links in header.html
+    // Map page names (without .html) to the nav link IDs in header.html
     const navLinksMap = {
-        'index.html': 'nav-home',
-        'services.html': 'nav-services',
-        'completed.html': 'nav-completed',
-        'ongoing.html': 'nav-ongoing',
-        'about.html': 'nav-about',
-        'start-your-project.html': 'nav-home',
+        'index': 'nav-home',
+        'services': 'nav-services',
+        'completed': 'nav-completed',
+        'ongoing': 'nav-ongoing',
+        'about': 'nav-about',
+        'projects-details': 'nav-completed', // Detail page highlights "Completed Projects"
+        'start-your-project': 'nav-home',
         '': 'nav-home' // Handles the root URL
     };
 
@@ -71,7 +75,7 @@ function setActiveNavLink() {
     }
 }
 
-// NEW: Load and display featured projects on the homepage
+// Load and display featured projects on the homepage
 async function loadHomepageProjects() {
   const grid = document.getElementById('homepage-projects-grid');
   if (!grid) return;
@@ -94,9 +98,12 @@ async function loadHomepageProjects() {
       const card = document.createElement('div');
       card.className = 'project-card';
 
+      const catLabel = (project.category || 'other').charAt(0).toUpperCase() + (project.category || 'other').slice(1);
+
       card.innerHTML = `
         <div class="project-image-placeholder" style="background-image: url('${getProjectHeroImageUrl(project)}');"></div>
         <div class="project-info">
+          <span class="category-badge category-${project.category || 'other'}">${catLabel}</span>
           <h3>${project.title}</h3>
           <p>${project.location ? project.location : ''}</p>
           <a href="${getProjectDetailsLink(project)}">View Details <i class="fas fa-arrow-right"></i></a>
@@ -137,10 +144,13 @@ async function loadCompletedProjects() {
           card.className = 'project-card';
           card.dataset.category = project.category;
 
+          const catLabel = (project.category || 'other').charAt(0).toUpperCase() + (project.category || 'other').slice(1);
+
           card.innerHTML = `
-              <div class="project-image-placeholder ${project.category}" 
+              <div class="project-image-placeholder" 
                    style="background-image: url('${getProjectHeroImageUrl(project)}');"></div>
               <div class="project-info">
+                  <span class="category-badge category-${project.category || 'other'}">${catLabel}</span>
                   <h3>${project.title}</h3>
                   <p>${project.description}, ${project.location}</p>
                   <a href="${getProjectDetailsLink(project)}">View Case Study <i class="fas fa-arrow-right"></i></a>
@@ -208,17 +218,24 @@ async function loadOngoingProjects() {
           const card = document.createElement('div');
           card.className = 'ongoing-card';
 
+          const title = project.title || 'Untitled Project';
+          const location = project.location || 'Not specified';
+          const type = project.type || 'Not specified';
+          const status = project.status || 'In Progress';
+          const completion = project.completion || 'TBD';
+          const progress = project.progress || 0;
+
           card.innerHTML = `
               <div class="ongoing-image" style="background-image: url('${getProjectHeroImageUrl(project)}');"></div>
               <div class="ongoing-details">
-                  <h3>${project.title}</h3>
-                  <p><strong>Location:</strong> ${project.location}</p>
-                  <p><strong>Type:</strong> ${project.type}</p>
-                  <p><strong>Status:</strong> ${project.status}</p>
-                  <p><strong>Estimated Completion:</strong> ${project.completion}</p>
-                  <p><strong>Progress (${project.progress}%):</strong></p>
+                  <h3>${title}</h3>
+                  <p><strong>Location:</strong> ${location}</p>
+                  <p><strong>Type:</strong> ${type}</p>
+                  <p><strong>Status:</strong> ${status}</p>
+                  <p><strong>Estimated Completion:</strong> ${completion}</p>
+                  <p><strong>Progress (${progress}%):</strong></p>
                   <div class="progress-bar">
-                      <div class="progress-bar-fill" style="width: ${project.progress}%;"></div>
+                      <div class="progress-bar-fill" style="width: ${progress}%;"></div>
                   </div>
               </div>
           `;
@@ -355,9 +372,11 @@ document.addEventListener('DOMContentLoaded', () => {
     loadHomepageProjects();
   }
 
-  if (window.location.pathname.includes('completed.html')) {
+  // DOM-based page detection — works regardless of URL format or server config
+  if (document.getElementById('completed-projects-grid')) {
       loadCompletedProjects();
-  } else if (window.location.pathname.includes('ongoing.html')) {
+  }
+  if (document.getElementById('ongoing-projects-list')) {
       loadOngoingProjects();
   }
 });

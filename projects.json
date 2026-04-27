@@ -2,7 +2,7 @@
     "completed":  [
                       {
                           "id":  "p10-gym-interior",
-                          "title":  "Gym interior - Pongalur",
+                          "title":  "Gym Interior - Pongalur",
                           "category":  "interior",
                           "location":  "Pongalur",
                           "description":  "GF: 1500 FF: 1500 Court: 1300",
@@ -12,7 +12,7 @@
                                           "year":  "",
                                           "area":  "",
                                           "duration":  "",
-                                          "fullDescription":  "Project no: 10 Building Type: Gym interior Steel building & pickle ball court Gf = 1500 Ff = 1500 Court = 1300 Location: pongalur",
+                                          "fullDescription":  "Project no: 10 | Building Type: Gym Interior — Steel building & Pickleball court | GF: 1500 sq ft, FF: 1500 sq ft, Court: 1300 sq ft | Location: Pongalur",
                                           "features":  [],
                                           "gallery":  [
                                                           "img01.jpg",
@@ -53,9 +53,9 @@
                       },
                       {
                           "id":  "p04-house",
-                          "title":  "House - Slide Show",
+                          "title":  "Residential House",
                           "category":  "residential",
-                          "location":  "Unknown",
+                          "location":  "Not specified",
                           "description":  "GF: 1200 FF: 1200",
                           "assetFolder":  "",
                           "heroImage":  "images/SlideShow/image1.jpg",
@@ -63,7 +63,7 @@
                                           "year":  "",
                                           "area":  "",
                                           "duration":  "",
-                                          "fullDescription":  "Project no: 4 Building Type: House Gf = 1200 Ff = 1200 Location: Not specified",
+                                          "fullDescription":  "Project no: 4 | Building Type: Residential House | GF: 1200 sq ft, FF: 1200 sq ft | Location: Not specified",
                                           "features":  [],
                                           "gallery":  [
 
@@ -121,17 +121,17 @@
                       },
                       {
                           "id":  "p07-project-07-2",
-                          "title":  "Project 07 - Unknown",
+                          "title":  "Commercial Project - P07",
                           "category":  "commercial",
-                          "location":  "Unknown",
-                          "description":  "Details of this project are not specified.",
+                          "location":  "Tamil Nadu",
+                          "description":  "A commercial construction project.",
                           "assetFolder":  "p07",
                           "heroImage":  "img01.jpg",
                           "details":  {
                                           "year":  "",
                                           "area":  "",
                                           "duration":  "",
-                                          "fullDescription":  "Project no: 7 Building Type: Unknown Location: Not specified",
+                                          "fullDescription":  "Project no: 7 | Building Type: Commercial | Location: Tamil Nadu",
                                           "features":  [],
                                           "gallery":  [
                                                           "img01.jpg",
@@ -169,6 +169,14 @@
     "ongoing":  [
                     {
                         "id":  "p07-project-07",
+                        "title":  "Commercial Building",
+                        "category":  "commercial",
+                        "location":  "Tamil Nadu",
+                        "type":  "Commercial",
+                        "status":  "Under Construction",
+                        "completion":  "2026",
+                        "progress":  60,
+                        "description":  "A commercial building project currently under construction.",
                         "assetFolder":  "p07",
                         "heroImage":  "img01.jpg"
                     }
