@@ -295,7 +295,7 @@ h1, h2, h3 {
 
 .project-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(min(350px, 100%), 1fr));
     gap: 30px;
 }
 
@@ -624,42 +624,46 @@ h1, h2, h3 {
     font-size: 0.95em;
 }
 
+/* ===== TABLET (≤ 900px) ===== */
 @media (max-width: 900px) {
-    
     .main-header {
         flex-direction: column;
-        padding: 20px;
+        padding: 15px 20px;
+        border-bottom: none; /* Remove white line on dark mobile header */
     }
     .main-nav ul {
         flex-wrap: wrap;
         justify-content: center;
-        margin: 15px 0;
+        margin: 10px 0;
         list-style: none;
-        padding: 0; 
-        display: flex; 
+        padding: 0;
+        display: flex;
+        gap: 4px;
     }
-    
     .main-nav ul li a {
         padding: 5px 10px;
+        font-size: 0.9em;
     }
-    
+    /* CTA button in header — smaller on tablet */
+    .main-header .cta-button {
+        padding: 8px 16px;
+        font-size: 0.85em;
+    }
     #header-placeholder {
-        position: relative; 
+        position: relative;
         background-color: var(--primary-color);
         z-index: 1000;
     }
-    
     .logo, .logo span, .main-nav ul li a {
         color: var(--text-light);
     }
-    
     #header-placeholder.transparent-header {
-        position: relative !important; 
-        background-color: var(--primary-color) !important; 
+        position: relative !important;
+        background-color: var(--primary-color) !important;
     }
-
     .cards-grid {
         flex-direction: column;
+        align-items: center;
     }
     .card {
         max-width: 100%;
@@ -673,19 +677,112 @@ h1, h2, h3 {
     }
 }
 
-@media (max-width: 600px) {
-    .logo-img { height: 32px; } 
-    .logo { font-size: 1.2em; }
-    .hero-content h1 {
-        font-size: 2.5em;
-    }
-    .project-grid {
-        grid-template-columns: 1fr;
-    }
-}
-
+/* ===== MOBILE LANDSCAPE / SMALL TABLET (≤ 768px) ===== */
 @media (max-width: 768px) {
     .form-grid {
         grid-template-columns: 1fr;
+    }
+    /* About page: stack story content vertically */
+    .story-content,
+    .story-content:nth-child(even) {
+        flex-direction: column;
+    }
+    .story-image {
+        height: 250px;
+        width: 100%;
+    }
+    /* Reduce large section headings */
+    .page-hero h1,
+    .page-hero-header h1 {
+        font-size: 2em;
+    }
+    .difference-section h2,
+    .featured-projects h2,
+    .video-section h2,
+    .contact-cta-section h2 {
+        font-size: 1.6em;
+    }
+    /* Reduce section padding on mobile */
+    .difference-section,
+    .featured-projects,
+    .video-section,
+    .contact-cta-section {
+        padding: 50px 15px;
+    }
+    .video-section {
+        padding: 50px 15px;
+    }
+    .video-wrapper {
+        border-radius: 8px;
+    }
+    .video-wrapper iframe {
+        border-radius: 8px;
+    }
+    /* Team section on mobile */
+    .team-section {
+        padding: 50px 15px !important;
+    }
+    .member-photo {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* ===== MOBILE PORTRAIT (≤ 600px) ===== */
+@media (max-width: 600px) {
+    .logo-img { height: 32px; }
+    .logo { font-size: 1.2em; }
+    /* Hide CTA button in header on small mobile — too cramped */
+    .main-header .cta-button {
+        display: none;
+    }
+    .hero-section {
+        height: 70vh; /* Don't force full viewport on small phones */
+    }
+    .hero-content h1 {
+        font-size: 2em;
+    }
+    .hero-content p {
+        font-size: 1em;
+    }
+    .project-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .project-image-placeholder {
+        height: 200px;
+    }
+    /* Filter buttons wrap nicely */
+    .filter-btn {
+        padding: 8px 14px;
+        font-size: 0.8em;
+    }
+    /* Story section mobile fine-tuning */
+    .story-section {
+        padding: 40px 15px;
+    }
+    .story-content {
+        gap: 20px;
+    }
+    .story-image {
+        height: 200px;
+    }
+    .story-text h3 {
+        font-size: 1.1em;
+    }
+    .story-text p {
+        font-size: 0.95em;
+    }
+    /* Ongoing cards stack on mobile */
+    .ongoing-card,
+    .ongoing-card:nth-child(even) {
+        flex-direction: column;
+    }
+    .ongoing-image {
+        width: 100%;
+        height: 200px;
+    }
+    .ongoing-details {
+        padding: 15px 0 0;
     }
 }
